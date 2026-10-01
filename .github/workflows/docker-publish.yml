@@ -2,7 +2,6 @@ name: Build Image and Push to Docker Hub
 
 on:
   push:
-    branches: [ "main" ] # Срабатывает при пуше в ветку main
     tags: [ "[0-9]+.[0-9]+" ] # Срабатывает на теги формата 8.5, 8.6, 9.0 и т.д.
   workflow_dispatch:
 jobs:
@@ -28,4 +27,4 @@ jobs:
           context: .
           push: true
           tags: |
-            kozlovsv78/yii2-php:${{ steps.version.outputs.version }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/yii2-php:${{ steps.version.outputs.version }}            
